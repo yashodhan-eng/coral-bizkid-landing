@@ -70,7 +70,7 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-2xl sm:rounded-3xl max-h-[85vh] overflow-y-auto mx-3 p-0">
+        <DialogContent className="w-[85vw] max-w-[340px] sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-y-auto p-0">
           <div className="p-4 sm:p-8">
             <DialogHeader className="mb-3 sm:mb-6">
               <DialogTitle className="text-xl sm:text-2xl font-bold text-center">
