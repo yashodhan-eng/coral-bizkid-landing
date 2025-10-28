@@ -72,13 +72,13 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-3xl mx-4">
+      <DialogContent className="sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-3xl !mx-4">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
             Enroll For <span className="text-primary">FREE</span>
           </DialogTitle>
           <DialogDescription className="text-center">
-            Start your child's business journey today. No credit card required.
+            Start your child's business journey today. Hurry, seats are filling up fast!
           </DialogDescription>
         </DialogHeader>
         
