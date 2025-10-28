@@ -57,6 +57,16 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        coral: {
+          primary: "hsl(var(--coral-primary))",
+          secondary: "hsl(var(--coral-secondary))",
+          accent: "hsl(var(--coral-accent))",
+          "accent-light": "hsl(var(--coral-accent-light))",
+        },
+      },
+      boxShadow: {
+        coral: "var(--coral-shadow)",
+        "coral-lg": "var(--coral-shadow-lg)",
       },
       borderRadius: {
         lg: "var(--radius)",
