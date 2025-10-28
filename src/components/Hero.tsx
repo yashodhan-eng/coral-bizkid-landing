@@ -19,7 +19,13 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
 
   useEffect(() => {
     if (isVideoModalOpen && videoRef.current) {
-      videoRef.current.play();
+      // Handle promise from play() for better iOS compatibility
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("Video autoplay failed:", error);
+        });
+      }
     }
   }, [isVideoModalOpen]);
 
@@ -90,7 +96,10 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             src={heroVideo}
             className="w-full h-auto rounded-2xl"
             controls
-            autoPlay
+            playsInline
+            webkit-playsinline="true"
+            preload="metadata"
+            controlsList="nodownload"
           />
         </DialogContent>
       </Dialog>
