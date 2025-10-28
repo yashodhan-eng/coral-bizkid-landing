@@ -10,20 +10,14 @@ interface HeroProps {
 
 const Hero = ({ onEnrollClick }: HeroProps) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handlePlayClick = () => {
     setIsVideoModalOpen(true);
-    // Load video source only when modal opens
-    if (!videoLoaded && videoRef.current) {
-      videoRef.current.src = "/hero-video.mp4";
-      setVideoLoaded(true);
-    }
   };
 
   useEffect(() => {
-    if (isVideoModalOpen && videoRef.current && videoLoaded) {
+    if (isVideoModalOpen && videoRef.current) {
       // Handle promise from play() for better iOS compatibility
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
@@ -32,7 +26,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
         });
       }
     }
-  }, [isVideoModalOpen, videoLoaded]);
+  }, [isVideoModalOpen]);
 
   return (
     <section className="relative flex items-center justify-center px-4 py-8 md:py-16 overflow-hidden">
@@ -100,11 +94,12 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
         <DialogContent className="max-w-3xl p-0 bg-black border-none rounded-2xl overflow-hidden !mx-4">
           <video 
             ref={videoRef}
+            src="/hero-video.mp4"
             className="w-full h-auto rounded-2xl"
             controls
             playsInline
             webkit-playsinline="true"
-            preload="auto"
+            preload="none"
             controlsList="nodownload"
           />
         </DialogContent>
