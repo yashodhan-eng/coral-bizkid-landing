@@ -16,11 +16,11 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           {/* Left content */}
           <div className="text-center md:text-left space-y-6 fade-in-up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Mini Business Series: Where Kids Think Like <span className="text-primary">CEOs</span>
+              Where Kids Think Like <span className="text-primary">CEOs</span>
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              A fun, hands-on business adventure for curious kids aged 8–13. Each week, they explore real-world brands — from Disney to MrBeast — and learn how great ideas grow into global successes.
+              Weekly business adventures for ages 8–13. Explore brands like Disney and MrBeast.
             </p>
             
             <div className="space-y-4">
