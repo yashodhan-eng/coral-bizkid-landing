@@ -15,28 +15,9 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="text-center md:text-left space-y-6 fade-in-up">
-            <div className="space-y-3">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight flex flex-wrap gap-x-4 gap-y-2 justify-center md:justify-start">
-                <span className="inline-block">
-                  <span className="block">Mini</span>
-                  <svg viewBox="0 0 100 8" className="w-full" preserveAspectRatio="none">
-                    <path d="M2,4 Q25,1 50,4 T98,4" stroke="hsl(var(--coral-primary))" strokeWidth="3" fill="none" strokeLinecap="round"/>
-                  </svg>
-                </span>
-                <span className="inline-block">
-                  <span className="block">Business</span>
-                  <svg viewBox="0 0 100 8" className="w-full" preserveAspectRatio="none">
-                    <path d="M2,4 Q25,1 50,4 T98,4" stroke="hsl(var(--coral-primary))" strokeWidth="3" fill="none" strokeLinecap="round"/>
-                  </svg>
-                </span>
-                <span className="inline-block">
-                  <span className="block">Series</span>
-                  <svg viewBox="0 0 100 8" className="w-full" preserveAspectRatio="none">
-                    <path d="M2,4 Q25,1 50,4 T98,4" stroke="hsl(var(--coral-primary))" strokeWidth="3" fill="none" strokeLinecap="round"/>
-                  </svg>
-                </span>
-              </h1>
-            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+              Mini Business Series
+            </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               Weekly business adventures for kids ages 8-13. From Disney to MrBeast, kids explore how ideas grow into empires.
