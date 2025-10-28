@@ -1,11 +1,23 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-kids-business.jpg";
+import { Play } from "lucide-react";
+import { useState, useRef } from "react";
+import heroVideo from "@/assets/hero-video.mp4";
 
 interface HeroProps {
   onEnrollClick: () => void;
 }
 
 const Hero = ({ onEnrollClick }: HeroProps) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlayClick = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-16 md:py-24 overflow-hidden">
       {/* Background gradient */}
@@ -38,14 +50,33 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             </div>
           </div>
           
-          {/* Right image */}
+          {/* Right video player */}
           <div className="relative fade-in order-first md:order-last">
             <div className="relative rounded-2xl overflow-hidden shadow-coral-lg">
-              <img 
-                src={heroImage} 
-                alt="Kids collaborating on business ideas with creative elements" 
+              <video 
+                ref={videoRef}
+                src={heroVideo}
                 className="w-full h-auto object-cover"
+                controls={isPlaying}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
               />
+              
+              {/* Play button overlay */}
+              {!isPlaying && (
+                <button
+                  onClick={handlePlayClick}
+                  className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
+                  aria-label="Play video"
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping" />
+                    <div className="relative bg-primary hover:bg-primary/90 rounded-full p-6 transition-all duration-300 group-hover:scale-110 shadow-coral-lg">
+                      <Play className="w-8 h-8 text-primary-foreground fill-current" />
+                    </div>
+                  </div>
+                </button>
+              )}
             </div>
             
             {/* Floating accent elements */}
