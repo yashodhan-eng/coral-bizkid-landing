@@ -1,22 +1,27 @@
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Play } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
+import videoThumbnail from "@/assets/video-thumbnail.png";
 
 interface HeroProps {
   onEnrollClick: () => void;
 }
 
 const Hero = ({ onEnrollClick }: HeroProps) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handlePlayClick = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
+    setIsVideoModalOpen(true);
   };
+
+  useEffect(() => {
+    if (isVideoModalOpen && videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [isVideoModalOpen]);
 
   return (
     <section className="relative flex items-center justify-center px-4 py-8 md:py-16 overflow-hidden">
@@ -50,33 +55,24 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             </div>
           </div>
           
-          {/* Right video player */}
+          {/* Right video thumbnail */}
           <div className="relative fade-in order-first md:order-last max-w-md mx-auto md:max-w-none">
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-coral-lg">
-              <video 
-                ref={videoRef}
-                src={heroVideo}
+            <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-coral-lg cursor-pointer group" onClick={handlePlayClick}>
+              <img 
+                src={videoThumbnail}
+                alt="Video preview: Explore big brands and build your own ideas"
                 className="w-full h-auto object-cover"
-                controls={isPlaying}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
               />
               
               {/* Play button overlay */}
-              {!isPlaying && (
-                <button
-                  onClick={handlePlayClick}
-                  className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
-                  aria-label="Play video"
-                >
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping" />
-                    <div className="relative bg-primary hover:bg-primary/90 rounded-full p-4 md:p-6 transition-all duration-300 group-hover:scale-110 shadow-coral-lg">
-                      <Play className="w-6 h-6 md:w-8 md:h-8 text-primary-foreground fill-current" />
-                    </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping" />
+                  <div className="relative bg-primary hover:bg-primary/90 rounded-full p-4 md:p-6 transition-all duration-300 group-hover:scale-110 shadow-coral-lg">
+                    <Play className="w-6 h-6 md:w-8 md:h-8 text-primary-foreground fill-current" />
                   </div>
-                </button>
-              )}
+                </div>
+              </div>
             </div>
             
             {/* Floating accent elements */}
@@ -85,6 +81,19 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
+        <DialogContent className="max-w-4xl p-0 bg-black border-none">
+          <video 
+            ref={videoRef}
+            src={heroVideo}
+            className="w-full h-auto"
+            controls
+            autoPlay
+          />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
