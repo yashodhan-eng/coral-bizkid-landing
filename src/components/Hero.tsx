@@ -15,12 +15,27 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="text-center md:text-left space-y-6 fade-in-up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Where Kids Think Like <span className="text-primary">CEOs</span>
-            </h1>
+            <div className="space-y-3">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                Mini Business Series: Where kids think like <span className="text-primary">CEOs</span>
+              </h1>
+              <svg 
+                viewBox="0 0 300 20" 
+                className="w-64 md:w-80 mx-auto md:mx-0"
+                preserveAspectRatio="none"
+              >
+                <path 
+                  d="M0,10 Q75,2 150,10 T300,10" 
+                  stroke="hsl(var(--coral-primary))" 
+                  strokeWidth="3" 
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Weekly business adventures for ages 8–13. Explore brands like Disney and MrBeast.
+              Weekly business adventures for kids ages 8-13. From Disney to MrBeast, kids explore how ideas grow into empires.
             </p>
             
             <div className="space-y-4">
