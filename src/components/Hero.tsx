@@ -67,7 +67,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
               {/* Play button overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping" />
+                  <div className="absolute inset-0 bg-primary/40 rounded-full animate-ping" style={{ animationDuration: '2.5s' }} />
                   <div className="relative bg-primary hover:bg-primary/90 rounded-full p-4 md:p-6 transition-all duration-300 group-hover:scale-110 shadow-coral-lg">
                     <Play className="w-6 h-6 md:w-8 md:h-8 text-primary-foreground fill-current" />
                   </div>
