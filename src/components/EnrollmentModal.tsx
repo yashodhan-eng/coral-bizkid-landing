@@ -70,18 +70,19 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-3xl max-h-[90vh] overflow-y-auto mx-4">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-center">
-              Enroll For <span className="text-primary">FREE</span>
-            </DialogTitle>
-            <DialogDescription className="text-center">
-              Start your child's business journey today. Hurry, seats are filling up fast!
-            </DialogDescription>
-          </DialogHeader>
-          
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <DialogContent className="sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-3xl max-h-[90vh] overflow-y-auto mx-4 p-0">
+          <div className="p-6 sm:p-8">
+            <DialogHeader className="mb-6">
+              <DialogTitle className="text-2xl font-bold text-center">
+                Enroll For <span className="text-primary">FREE</span>
+              </DialogTitle>
+              <DialogDescription className="text-center">
+                Start your child's business journey today. Hurry, seats are filling up fast!
+              </DialogDescription>
+            </DialogHeader>
+            
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
                 control={form.control}
                 name="parentName"
@@ -126,8 +127,9 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
               >
                 {isSubmitting ? "Enrolling..." : "Book your seat now"}
               </Button>
-            </form>
-          </Form>
+              </form>
+            </Form>
+          </div>
         </DialogContent>
       </Dialog>
 
