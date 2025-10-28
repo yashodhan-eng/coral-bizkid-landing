@@ -70,33 +70,33 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-3xl max-h-[90vh] overflow-y-auto mx-4 p-0">
-          <div className="p-6 sm:p-8">
-            <DialogHeader className="mb-6">
-              <DialogTitle className="text-2xl font-bold text-center">
+        <DialogContent className="sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-2xl sm:rounded-3xl max-h-[85vh] overflow-y-auto mx-3 p-0">
+          <div className="p-4 sm:p-8">
+            <DialogHeader className="mb-3 sm:mb-6">
+              <DialogTitle className="text-xl sm:text-2xl font-bold text-center">
                 Enroll For <span className="text-primary">FREE</span>
               </DialogTitle>
-              <DialogDescription className="text-center">
+              <DialogDescription className="text-center text-xs sm:text-sm">
                 Start your child's business journey today. Hurry, seats are filling up fast!
               </DialogDescription>
             </DialogHeader>
             
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4">
               <FormField
                 control={form.control}
                 name="parentName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Parent Name</FormLabel>
+                    <FormLabel className="text-sm">Parent Name</FormLabel>
                     <FormControl>
                       <Input 
                         placeholder="Enter your full name" 
                         {...field} 
-                        className="rounded-xl"
+                        className="rounded-xl h-10 sm:h-11 text-sm"
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-xs" />
                   </FormItem>
                 )}
               />
@@ -106,23 +106,23 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email Address</FormLabel>
+                    <FormLabel className="text-sm">Email Address</FormLabel>
                     <FormControl>
                       <Input 
                         type="email"
                         placeholder="your.email@example.com" 
                         {...field}
-                        className="rounded-xl"
+                        className="rounded-xl h-10 sm:h-11 text-sm"
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-xs" />
                   </FormItem>
                 )}
               />
               
               <Button 
                 type="submit" 
-                className="w-full py-6 text-lg font-semibold bg-primary hover:bg-primary/90 shadow-coral transition-all duration-300 rounded-xl"
+                className="w-full py-5 sm:py-6 text-base sm:text-lg font-semibold bg-primary hover:bg-primary/90 shadow-coral transition-all duration-300 rounded-xl"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Enrolling..." : "Book your seat now"}
