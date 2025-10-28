@@ -16,22 +16,26 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           {/* Left content */}
           <div className="text-center md:text-left space-y-6 fade-in-up">
             <div className="space-y-3">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                Mini Business Series
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight flex flex-wrap gap-x-4 gap-y-2 justify-center md:justify-start">
+                <span className="inline-block">
+                  <span className="block">Mini</span>
+                  <svg viewBox="0 0 100 8" className="w-full" preserveAspectRatio="none">
+                    <path d="M2,4 Q25,1 50,4 T98,4" stroke="hsl(var(--coral-primary))" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </span>
+                <span className="inline-block">
+                  <span className="block">Business</span>
+                  <svg viewBox="0 0 100 8" className="w-full" preserveAspectRatio="none">
+                    <path d="M2,4 Q25,1 50,4 T98,4" stroke="hsl(var(--coral-primary))" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </span>
+                <span className="inline-block">
+                  <span className="block">Series</span>
+                  <svg viewBox="0 0 100 8" className="w-full" preserveAspectRatio="none">
+                    <path d="M2,4 Q25,1 50,4 T98,4" stroke="hsl(var(--coral-primary))" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </span>
               </h1>
-              <svg 
-                viewBox="0 0 400 15" 
-                className="w-full max-w-md mx-auto md:mx-0"
-                preserveAspectRatio="none"
-              >
-                <path 
-                  d="M5,8 Q100,2 200,8 T395,8" 
-                  stroke="hsl(var(--coral-primary))" 
-                  strokeWidth="4" 
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </svg>
             </div>
             
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
