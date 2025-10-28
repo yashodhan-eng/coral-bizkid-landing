@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Play } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import heroVideo from "@/assets/hero-video.mp4";
 import videoThumbnail from "@/assets/video-thumbnail.png";
 
 interface HeroProps {
@@ -11,14 +10,20 @@ interface HeroProps {
 
 const Hero = ({ onEnrollClick }: HeroProps) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handlePlayClick = () => {
     setIsVideoModalOpen(true);
+    // Load video source only when modal opens
+    if (!videoLoaded && videoRef.current) {
+      videoRef.current.src = "/hero-video.mp4";
+      setVideoLoaded(true);
+    }
   };
 
   useEffect(() => {
-    if (isVideoModalOpen && videoRef.current) {
+    if (isVideoModalOpen && videoRef.current && videoLoaded) {
       // Handle promise from play() for better iOS compatibility
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
@@ -27,7 +32,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
         });
       }
     }
-  }, [isVideoModalOpen]);
+  }, [isVideoModalOpen, videoLoaded]);
 
   return (
     <section className="relative flex items-center justify-center px-4 py-8 md:py-16 overflow-hidden">
@@ -68,6 +73,8 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
                 src={videoThumbnail}
                 alt="Video preview: Explore big brands and build your own ideas"
                 className="w-full h-auto object-cover"
+                loading="eager"
+                decoding="async"
               />
               
               {/* Play button overlay */}
@@ -93,12 +100,11 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
         <DialogContent className="max-w-3xl p-0 bg-black border-none rounded-2xl overflow-hidden !mx-4">
           <video 
             ref={videoRef}
-            src={heroVideo}
             className="w-full h-auto rounded-2xl"
             controls
             playsInline
             webkit-playsinline="true"
-            preload="metadata"
+            preload="auto"
             controlsList="nodownload"
           />
         </DialogContent>
