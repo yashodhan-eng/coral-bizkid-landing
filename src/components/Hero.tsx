@@ -84,7 +84,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
 
       {/* Video Modal */}
       <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
-        <DialogContent className="max-w-3xl p-0 bg-black border-none rounded-2xl overflow-hidden">
+        <DialogContent className="max-w-3xl p-0 bg-black border-none rounded-2xl overflow-hidden !mx-4">
           <video 
             ref={videoRef}
             src={heroVideo}
