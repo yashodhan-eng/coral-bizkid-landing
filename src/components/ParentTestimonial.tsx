@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ChevronDown } from "lucide-react";
 
 const ParentTestimonial = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -16,26 +16,41 @@ const ParentTestimonial = () => {
           What Parents Are Saying
         </h2>
         
-        <Card className="p-6 md:p-8 shadow-lg">
-          <div className="space-y-4">
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed whitespace-pre-line">
-              {isExpanded ? fullText : shortText}
-            </p>
-            
-            <Button
-              onClick={() => setIsExpanded(!isExpanded)}
-              variant="default"
-              className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground"
-            >
-              {isExpanded ? "Show Less" : "Show More"}
-            </Button>
-            
-            <div className="pt-4 border-t border-border">
-              <p className="font-semibold text-foreground">Sarah</p>
-              <p className="text-sm text-muted-foreground">California</p>
+        <div className="relative">
+          {/* Orange glow animation */}
+          <div className="absolute inset-0 bg-primary/20 rounded-xl blur-xl animate-pulse" style={{ animationDuration: '3s' }} />
+          
+          <Card className="relative p-6 md:p-8 shadow-coral-lg">
+            <div className="space-y-4">
+              {/* Name and location at top */}
+              <div className="pb-4 border-b border-border">
+                <p className="font-semibold text-foreground">Sarah</p>
+                <p className="text-sm text-muted-foreground">California</p>
+              </div>
+              
+              {/* Testimonial text with gradient fade effect when collapsed */}
+              <div className="relative">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {isExpanded ? fullText : shortText}
+                </p>
+                
+                {/* Gradient fade overlay when collapsed */}
+                {!isExpanded && (
+                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-card via-card/80 to-transparent pointer-events-none" />
+                )}
+              </div>
+              
+              {/* Show More/Less button */}
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium mx-auto"
+              >
+                <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                <span>{isExpanded ? "Show less" : "Show more"}</span>
+              </button>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
     </section>
   );
