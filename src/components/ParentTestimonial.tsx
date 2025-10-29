@@ -23,9 +23,17 @@ const ParentTestimonial = () => {
           <Card className="relative p-6 md:p-8 shadow-coral-lg">
             <div className="space-y-4">
               {/* Name and location at top */}
-              <div className="pb-4 border-b border-border">
-                <p className="font-semibold text-foreground">Sarah</p>
-                <p className="text-sm text-muted-foreground">California</p>
+              <div className="flex items-center gap-3 pb-4 border-b border-border">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                  <span className="text-xl font-bold text-primary">S</span>
+                </div>
+                <div>
+                  <p className="font-bold text-lg text-foreground">Sarah</p>
+                  <p className="text-sm text-muted-foreground flex items-center gap-1">
+                    <span className="text-primary">📍</span>
+                    California
+                  </p>
+                </div>
               </div>
               
               {/* Testimonial text with gradient fade effect when collapsed */}
