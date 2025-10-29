@@ -97,6 +97,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             src="/hero-video.mp4"
             className="w-full h-auto rounded-2xl"
             controls
+            autoPlay
             playsInline
             webkit-playsinline="true"
             preload="none"
