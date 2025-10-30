@@ -46,13 +46,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             </p>
             
             <div className="space-y-3 md:space-y-4">
-              <div className="flex items-center gap-2 text-sm md:text-base text-muted-foreground mb-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
-                  🎥 Live online classes
-                </span>
-              </div>
-              
-              <Button 
+              <Button
                 size="lg" 
                 onClick={onEnrollClick}
                 className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-coral-lg hover:shadow-coral transition-all duration-300 hover:scale-105"
@@ -68,6 +62,11 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           
           {/* Right video thumbnail */}
           <div className="relative fade-in order-first md:order-last max-w-md mx-auto md:max-w-none">
+            <div className="flex justify-center mb-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm">
+                Live online classes
+              </span>
+            </div>
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-coral-lg cursor-pointer group" onClick={handlePlayClick}>
               <img 
                 src={videoThumbnail}
