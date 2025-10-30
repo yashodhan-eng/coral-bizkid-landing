@@ -88,14 +88,19 @@ const LearningOutcomes = () => {
                     {schedule.map((item, index) => (
                       <div 
                         key={index}
-                        className="pl-11 md:pl-13 border-l-2 border-primary/20 py-2"
+                        className="flex gap-3 items-start"
                       >
-                        <p className="font-semibold text-sm md:text-base text-foreground">
-                          {item.company}
-                        </p>
-                        <p className="text-xs md:text-sm text-muted-foreground">
-                          {item.topics}
-                        </p>
+                        <div className="flex-shrink-0 w-16 text-xs md:text-sm font-medium text-primary">
+                          {item.week}
+                        </div>
+                        <div className="flex-1 border-l-2 border-primary/20 pl-3 py-2">
+                          <p className="font-semibold text-sm md:text-base text-foreground">
+                            {item.company}
+                          </p>
+                          <p className="text-xs md:text-sm text-muted-foreground">
+                            {item.topics}
+                          </p>
+                        </div>
                       </div>
                     ))}
                   </div>
