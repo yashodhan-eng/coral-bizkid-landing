@@ -41,9 +41,14 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
               Mini Business Series
             </h1>
             
-            <p className="text-base md:text-xl text-muted-foreground leading-relaxed">
-              Weekly business adventures for kids ages 8-13. From Disney to MrBeast, kids explore how ideas grow into empires.
-            </p>
+            <div className="space-y-2">
+              <p className="text-base md:text-xl font-semibold text-foreground leading-relaxed">
+                Weekly, Hands-On Business Classes for Kids (Ages 8–13)
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                From Mr. Beast to Apple: A mini MBA experience that teaches what it really takes to build & grow an empire.
+              </p>
+            </div>
             
             <div className="space-y-3 md:space-y-4">
               <Button
