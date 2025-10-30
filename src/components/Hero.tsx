@@ -69,7 +69,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           <div className="relative fade-in order-first md:order-last max-w-md mx-auto md:max-w-none">
             <div className="flex justify-center mb-4">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm">
-                Live online classes
+                Weekly Live Online Classes for Ages 8-13
               </span>
             </div>
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-coral-lg cursor-pointer group" onClick={handlePlayClick}>
