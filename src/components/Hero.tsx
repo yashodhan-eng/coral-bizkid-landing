@@ -46,6 +46,12 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             </p>
             
             <div className="space-y-3 md:space-y-4">
+              <div className="flex items-center gap-2 text-sm md:text-base text-muted-foreground mb-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">
+                  🎥 Live online classes
+                </span>
+              </div>
+              
               <Button 
                 size="lg" 
                 onClick={onEnrollClick}
@@ -54,8 +60,8 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
                 Enroll For FREE
               </Button>
               
-              <p className="text-xs md:text-sm text-muted-foreground">
-                Class meets every <span className="font-semibold text-foreground">Thursday</span> · 5 PM – 6 PM (PST)
+              <p className="text-sm md:text-base text-muted-foreground">
+                Class meets every <span className="font-semibold text-foreground">Thursday</span> · 5 PM – 5:50 PM (PST)
               </p>
             </div>
           </div>
