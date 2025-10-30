@@ -1,6 +1,11 @@
-import { useState } from "react";
 import { Lightbulb, MessageSquare, TrendingUp, ChevronDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const learningPoints = [
   {
@@ -36,8 +41,6 @@ const schedule = [
 ];
 
 const LearningOutcomes = () => {
-  const [isScheduleExpanded, setIsScheduleExpanded] = useState(false);
-
   return (
     <section className="py-12 md:py-16 px-4 bg-gradient-to-b from-background to-coral-secondary/10">
       <div className="container max-w-4xl mx-auto">
@@ -67,43 +70,38 @@ const LearningOutcomes = () => {
           })}
 
           {/* Schedule Section */}
-          <Card className="p-4 md:p-5 border-primary/20">
-            <button
-              onClick={() => setIsScheduleExpanded(!isScheduleExpanded)}
-              className="w-full flex items-center justify-between gap-3"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <span className="text-lg md:text-xl">📅</span>
-                </div>
-                <h3 className="text-base md:text-lg font-semibold text-foreground text-left">
-                  Next 3 Weeks' Schedule At A Glance
-                </h3>
-              </div>
-              <ChevronDown 
-                className={`w-5 h-5 text-primary transition-transform flex-shrink-0 ${
-                  isScheduleExpanded ? 'rotate-180' : ''
-                }`} 
-              />
-            </button>
-
-            {isScheduleExpanded && (
-              <div className="mt-4 space-y-3 animate-accordion-down">
-                {schedule.map((item, index) => (
-                  <div 
-                    key={index}
-                    className="pl-11 md:pl-13 border-l-2 border-primary/20 py-2"
-                  >
-                    <p className="font-semibold text-sm md:text-base text-foreground">
-                      {item.company}
-                    </p>
-                    <p className="text-xs md:text-sm text-muted-foreground">
-                      {item.topics}
-                    </p>
+          <Card className="p-4 md:p-5 border-primary/20 overflow-hidden">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="schedule" className="border-none">
+                <AccordionTrigger className="hover:no-underline py-0">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <span className="text-lg md:text-xl">📅</span>
+                    </div>
+                    <h3 className="text-base md:text-lg font-semibold text-foreground text-left">
+                      Next 3 Weeks' Schedule At A Glance
+                    </h3>
                   </div>
-                ))}
-              </div>
-            )}
+                </AccordionTrigger>
+                <AccordionContent className="pt-4">
+                  <div className="space-y-3">
+                    {schedule.map((item, index) => (
+                      <div 
+                        key={index}
+                        className="pl-11 md:pl-13 border-l-2 border-primary/20 py-2"
+                      >
+                        <p className="font-semibold text-sm md:text-base text-foreground">
+                          {item.company}
+                        </p>
+                        <p className="text-xs md:text-sm text-muted-foreground">
+                          {item.topics}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </Card>
         </div>
       </div>
