@@ -68,7 +68,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           {/* Right video thumbnail */}
           <div className="relative fade-in order-first md:order-last max-w-md mx-auto md:max-w-none">
             <div className="flex justify-center mb-4">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm">
+              <span className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-primary/10 text-primary font-medium text-sm text-center">
                 Weekly Live Online Classes for Ages 8-13
               </span>
             </div>
