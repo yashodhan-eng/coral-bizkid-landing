@@ -88,9 +88,9 @@ const LearningOutcomes = () => {
                     {schedule.map((item, index) => (
                       <div 
                         key={index}
-                        className="flex gap-3 items-start"
+                        className="flex gap-3 items-center"
                       >
-                        <div className="flex-shrink-0 w-16 text-xs md:text-sm font-medium text-primary">
+                        <div className="flex-shrink-0 w-16 text-sm md:text-base font-semibold text-primary text-center">
                           {item.week}
                         </div>
                         <div className="flex-1 border-l-2 border-primary/20 pl-3 py-2">
