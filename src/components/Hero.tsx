@@ -38,15 +38,12 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           {/* Left content */}
           <div className="text-center md:text-left space-y-4 md:space-y-6 fade-in-up">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Mini Business Series
+              Weekly entrepreneurship classes for kids ages 8-13
             </h1>
             
             <div className="space-y-2">
-              <p className="text-base md:text-xl font-semibold text-foreground leading-relaxed">
-                Weekly, Hands-On Business Classes for Kids (Ages 8–13)
-              </p>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                From Mr. Beast to Apple: A mini MBA experience that teaches what it really takes to build & grow an empire.
+                Each week, kids deep-dive into a new company — from MrBeast to Apple — discovering how great founders turned ideas into success stories. They wrap up every class with a creative project, presenting their own business ideas — a fun Mini MBA for young innovators!
               </p>
             </div>
             
