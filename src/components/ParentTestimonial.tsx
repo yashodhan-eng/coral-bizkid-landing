@@ -44,7 +44,7 @@ const ParentTestimonial = () => {
                 
                 {/* Gradient fade overlay when collapsed */}
                 {!isExpanded && (
-                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-card via-card/80 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 h-12 md:h-16 bg-gradient-to-t from-card via-card/80 to-transparent pointer-events-none" />
                 )}
               </div>
               
