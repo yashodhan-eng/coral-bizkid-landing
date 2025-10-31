@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 const ParentTestimonial = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const shortText = "I have a business background, and honestly, I wish I had something like this when I was a kid.\nMy 9-year-old is super into Shark Tank, lemonade stands, and how companies make money. We've tried a couple of online classes before, but this class remains his favourite.";
+  const shortText = "I have a business background, and honestly, I wish I had something like this when I was a kid.\nMy 9-year-old is super into Shark Tank, lemonade stands, and how companies make money. We've tried a couple of online classes before, but this class remains his favourite.\n\nEvery week, they discuss real companies like how LEGO bounced back from bankruptcy or how big brands got started. But what I really appreciate is that it's not just passive learning.";
   
   const fullText = "I have a business background, and honestly, I wish I had something like this when I was a kid.\nMy 9-year-old is super into Shark Tank, lemonade stands, and how companies make money. We've tried a couple of online classes before, but this class remains his favourite.\n\nEvery week, they discuss real companies like how LEGO bounced back from bankruptcy or how big brands got started. But what I really appreciate is that it's not just passive learning. During the Nike class, my son designed his own shoe, gave it a name, figured out the pricing, and even pitched it to his friends. I was genuinely impressed by the thought he put into it.\n\nI often find myself listening in while doing chores because the discussions are genuinely interesting. I can't thank the teacher and the platform enough for such a hands-on, fun class.";
 
