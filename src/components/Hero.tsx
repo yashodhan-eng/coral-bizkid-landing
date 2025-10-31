@@ -38,7 +38,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           {/* Left content */}
           <div className="text-center md:text-left space-y-4 md:space-y-6 fade-in-up">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Weekly entrepreneurship classes for kids ages 8-13
+              Mini Business Series
             </h1>
             
             <div className="space-y-2">
