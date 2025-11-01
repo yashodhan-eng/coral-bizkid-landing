@@ -40,6 +40,9 @@ export const adCampaignService = {
         recaptchaToken: data.recaptchaToken,
       };
 
+      console.log('API Request URL:', `${API_BASE_URL}/ad-campaigns/register`);
+      console.log('API Request Payload:', payload);
+
       const response = await fetch(`${API_BASE_URL}/ad-campaigns/register`, {
         method: 'POST',
         headers: {
@@ -50,16 +53,31 @@ export const adCampaignService = {
         body: JSON.stringify(payload),
       });
 
-      // Handle network errors
-      if (!response.ok && response.status >= 500) {
-        throw new Error('Server error. Please try again later.');
-      }
+      console.log('API Response Status:', response.status, response.statusText);
 
       let result;
       try {
         result = await response.json();
+        console.log('API Response Data:', result);
       } catch (parseError) {
+        console.error('Failed to parse response:', parseError);
         throw new Error('Invalid response from server. Please try again.');
+      }
+
+      // Handle 400 Bad Request errors explicitly
+      if (!response.ok && response.status === 400) {
+        const responseData = result.response || result;
+        const errorMessage = responseData.error || 'Bad request. Please check your input.';
+        const error = new Error(errorMessage) as any;
+        error.errorType = responseData.error_type || 'validation_error';
+        error.status = response.status;
+        error.error_codes = responseData.error_codes;
+        throw error;
+      }
+
+      // Handle network errors
+      if (!response.ok && response.status >= 500) {
+        throw new Error('Server error. Please try again later.');
       }
 
       // Handle response format: { response: {...}, placements: [...] }
