@@ -35,6 +35,7 @@ declare global {
       }) => number;
       reset: (widgetId: number) => void;
       getResponse: (widgetId: number) => string;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
     };
   }
 }
@@ -209,13 +210,36 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
     setIsSubmitting(true);
     
     try {
+      // Get fresh reCAPTCHA token right before submission (tokens can expire)
+      let freshToken = recaptchaToken;
+      if (recaptchaWidgetId.current !== null && window.grecaptcha) {
+        try {
+          const currentToken = window.grecaptcha.getResponse(recaptchaWidgetId.current);
+          if (currentToken) {
+            freshToken = currentToken;
+            console.log('Using fresh reCAPTCHA token for submission');
+          } else {
+            // Token expired, reset and ask user to complete again
+            setIsSubmitting(false);
+            window.grecaptcha.reset(recaptchaWidgetId.current);
+            setRecaptchaToken(null);
+            toast.error('reCAPTCHA token expired. Please complete the verification again.');
+            return;
+          }
+        } catch (error) {
+          console.error('Error getting reCAPTCHA response:', error);
+          // Continue with stored token
+        }
+      }
+
       // Call API first - don't close modal or show loader yet
       console.log("Calling API with data:", data);
+      console.log("Using reCAPTCHA token:", freshToken ? `${freshToken.substring(0, 20)}...` : 'null');
       const response = await adCampaignService.register({
         name: data.parentName,
         email: data.email,
         source: 'MBS_Class_Page',
-        recaptchaToken: recaptchaToken,
+        recaptchaToken: freshToken,
       });
 
       console.log("API response:", response);
@@ -264,6 +288,9 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
         errorMessage = error.message || 'Please check your information and try again.';
       } else if (error.errorType === 'captcha_error') {
         errorMessage = 'reCAPTCHA verification failed. Please complete it again and try.';
+        if (error.error_codes) {
+          console.error('reCAPTCHA error codes:', error.error_codes);
+        }
       } else if (error.message) {
         errorMessage = error.message;
       }
