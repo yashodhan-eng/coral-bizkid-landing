@@ -11,26 +11,32 @@ const testimonials = [
   {
     text: "My daughter loves the hands-on projects every week!",
     author: "Jennifer M.",
+    location: "California",
   },
   {
     text: "Finally, a class that teaches real business skills to kids.",
     author: "Michael R.",
+    location: "Texas",
   },
   {
     text: "The teacher makes learning about companies so engaging.",
     author: "Lisa P.",
+    location: "Florida",
   },
   {
     text: "My son can't wait for Thursday classes every week!",
     author: "David K.",
+    location: "Nevada",
   },
   {
     text: "Great way to introduce entrepreneurship to young minds.",
     author: "Amanda S.",
+    location: "Arizona",
   },
   {
     text: "The pitch projects build confidence and creativity.",
     author: "Robert T.",
+    location: "Colorado",
   },
 ];
 
@@ -91,7 +97,7 @@ const TestimonialCarousel = ({ compact = false }: TestimonialCarouselProps) => {
                       ? "text-[10px] text-muted-foreground font-medium"
                       : "text-sm lg:text-base text-muted-foreground font-medium"
                   }>
-                    — {testimonial.author}
+                    — {testimonial.author}, {testimonial.location}
                   </p>
                 </div>
               </Card>
