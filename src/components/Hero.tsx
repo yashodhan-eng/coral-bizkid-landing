@@ -16,18 +16,20 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           <div className="w-full lg:flex-1 lg:max-w-3xl space-y-4 sm:space-y-5 md:space-y-7 lg:space-y-10 text-center md:text-center lg:text-left">
             {/* Trust Signals - Top Priority */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 lg:gap-5">
-              <div className="flex items-center gap-1.5 bg-card/50 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full border border-primary/20 md:shadow-sm">
-                <img 
-                  src={trustpilotLogo}
-                  alt="Trustpilot" 
-                  className="h-4 w-4 md:h-5 md:w-5"
-                />
-                <span className="text-xs sm:text-sm md:text-base font-medium text-muted-foreground">Trustpilot</span>
-                <span className="text-xs sm:text-sm md:text-base font-semibold text-foreground">4.7/5</span>
-                <div className="flex">
+              <div className="flex items-center gap-2 md:gap-3 lg:gap-4 bg-white px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3.5 rounded-lg shadow-md">
+                <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground border-r border-border pr-2 md:pr-3 lg:pr-4">Excellent</span>
+                <div className="flex gap-0.5 md:gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary text-base md:text-lg lg:text-xl">★</span>
+                    <span key={i} className="text-[#00b67a] text-lg md:text-xl lg:text-2xl">★</span>
                   ))}
+                </div>
+                <div className="flex items-center gap-1.5 md:gap-2">
+                  <img 
+                    src={trustpilotLogo}
+                    alt="Trustpilot" 
+                    className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"
+                  />
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-foreground">Trustpilot</span>
                 </div>
               </div>
               
