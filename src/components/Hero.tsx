@@ -26,7 +26,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
                 <span className="text-xs sm:text-sm md:text-base font-semibold text-foreground">4.7/5</span>
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary text-xs md:text-sm">★</span>
+                    <span key={i} className="text-primary text-base md:text-lg lg:text-xl">★</span>
                   ))}
                 </div>
               </div>
