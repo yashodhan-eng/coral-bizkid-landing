@@ -10,39 +10,39 @@ interface HeroProps {
 const Hero = ({ onEnrollClick }: HeroProps) => {
   return (
     <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-background to-primary/5 overflow-hidden">
-      <div className="container mx-auto px-4 py-8 sm:py-10 md:py-12 lg:py-20">
-        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 lg:gap-16 items-center md:items-start">
+      <div className="container mx-auto px-4 py-8 sm:py-10 md:py-16 lg:py-24 lg:max-w-7xl">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
           {/* Left Column - Main Content */}
-          <div className="w-full md:col-span-1 lg:col-span-3 space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 text-center md:text-left">
+          <div className="w-full lg:flex-1 lg:max-w-3xl space-y-4 sm:space-y-5 md:space-y-7 lg:space-y-10 text-center md:text-center lg:text-left">
             {/* Trust Signals - Top Priority */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4">
-              <div className="flex items-center gap-1.5 bg-card/50 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/20">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 lg:gap-5">
+              <div className="flex items-center gap-1.5 bg-card/50 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full border border-primary/20 md:shadow-sm">
                 <img 
                   src={trustpilotLogo}
                   alt="Trustpilot" 
-                  className="h-4 w-4"
+                  className="h-4 w-4 md:h-5 md:w-5"
                 />
-                <span className="text-xs sm:text-sm font-medium text-muted-foreground">Trustpilot</span>
-                <span className="text-xs sm:text-sm font-semibold text-foreground">4.7/5</span>
+                <span className="text-xs sm:text-sm md:text-base font-medium text-muted-foreground">Trustpilot</span>
+                <span className="text-xs sm:text-sm md:text-base font-semibold text-foreground">4.7/5</span>
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary text-xs">★</span>
+                    <span key={i} className="text-primary text-xs md:text-sm">★</span>
                   ))}
                 </div>
               </div>
               
-              <div className="inline-flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
-                <span className="text-xs sm:text-sm font-semibold text-primary">Weekly Live Online Classes for Ages 8-13</span>
+              <div className="inline-flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full border border-primary/20 md:shadow-sm">
+                <span className="text-xs sm:text-sm md:text-base font-semibold text-primary">Weekly Live Online Classes for Ages 8-13</span>
               </div>
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight md:tracking-tight">
               Mini Business Series
             </h1>
 
             {/* Description - Condensed on Mobile */}
-            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto md:mx-auto lg:mx-0 leading-relaxed md:leading-relaxed">
               <span className="block sm:hidden">
                 Kids explore real companies like MrBeast and Apple, then pitch their own business ideas. A fun Mini MBA for ages 8-13!
               </span>
@@ -56,13 +56,13 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             {/* CTA Button */}
             <button
               onClick={onEnrollClick}
-              className="w-full sm:w-full lg:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-4 sm:py-5 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all text-base sm:text-lg"
+              className="w-full sm:w-full md:w-auto md:px-10 lg:px-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-4 sm:py-5 md:py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all text-base sm:text-lg md:text-xl lg:animate-pulse lg:hover:animate-none"
             >
               Enroll For FREE
             </button>
 
             {/* Class Schedule */}
-            <p className="text-sm sm:text-base text-muted-foreground">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
               <span className="font-semibold text-foreground">Every Thursday</span> • 5 PM – 5:50 PM (PST) • Online
             </p>
 
@@ -74,32 +74,32 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pt-2 sm:pt-3">
-              <div className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary">5,000+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Students</div>
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 lg:gap-12 pt-2 sm:pt-3 md:pt-4">
+              <div className="text-center md:text-center lg:text-left">
+                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary">5,000+</div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Students</div>
               </div>
-              <div className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary">15+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Teachers</div>
+              <div className="text-center md:text-center lg:text-left md:border-l md:border-r md:border-primary/20 lg:border-0">
+                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary">15+</div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Teachers</div>
               </div>
-              <div className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary">98%</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Satisfaction</div>
+              <div className="text-center md:text-center lg:text-left">
+                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary">98%</div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Satisfaction</div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Desktop Testimonials */}
-          <div className="hidden md:block md:col-span-1 lg:col-span-2">
+          {/* Right Column - Desktop Testimonials Only */}
+          <div className="hidden lg:block lg:flex-1 lg:max-w-md">
             <TestimonialCarousel compact={false} />
           </div>
         </div>
       </div>
 
       {/* Decorative Elements - Desktop Only */}
-      <div className="hidden lg:block absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-      <div className="hidden lg:block absolute bottom-20 left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+      <div className="hidden lg:block absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+      <div className="hidden lg:block absolute bottom-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
     </section>
   );
 };
