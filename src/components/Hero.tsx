@@ -17,7 +17,10 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             {/* Trust Signals - Top Priority */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 lg:gap-5">
               <div className="flex items-center gap-2 md:gap-3 lg:gap-4 bg-white px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3.5 rounded-lg shadow-md">
-                <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground border-r border-border pr-2 md:pr-3 lg:pr-4">4.7</span>
+                <div className="flex items-center gap-1.5 md:gap-2 border-r border-border pr-2 md:pr-3 lg:pr-4">
+                  <Star className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 fill-[#00b67a] text-[#00b67a]" />
+                  <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground">4.7</span>
+                </div>
                 <div className="flex gap-0.5 md:gap-1">
                   {[...Array(4)].map((_, i) => (
                     <span key={i} className="text-[#00b67a] text-lg md:text-xl lg:text-2xl">★</span>
