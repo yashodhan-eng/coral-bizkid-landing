@@ -92,13 +92,14 @@ const TestimonialCarousel = ({ compact = false }: TestimonialCarouselProps) => {
                   }>
                     "{testimonial.text}"
                   </p>
-                  <p className={
+                  <div className={
                     compact
                       ? "text-[10px] text-muted-foreground font-medium"
                       : "text-sm lg:text-base text-muted-foreground font-medium"
                   }>
-                    — {testimonial.author}, {testimonial.location}
-                  </p>
+                    <p>— {testimonial.author}</p>
+                    <p className="opacity-70">{testimonial.location}</p>
+                  </div>
                 </div>
               </Card>
             </CarouselItem>
