@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LearningOutcomes from "@/components/LearningOutcomes";
-import ParentTestimonial from "@/components/ParentTestimonial";
+import VideoSection from "@/components/VideoSection";
 import CTABanner from "@/components/CTABanner";
 import EnrollmentModal from "@/components/EnrollmentModal";
 
@@ -18,7 +18,7 @@ const Index = () => {
       <Header />
       <Hero onEnrollClick={handleEnrollClick} />
       <LearningOutcomes />
-      <ParentTestimonial />
+      <VideoSection />
       <CTABanner onEnrollClick={handleEnrollClick} />
       <EnrollmentModal open={isModalOpen} onOpenChange={setIsModalOpen} />
     </main>

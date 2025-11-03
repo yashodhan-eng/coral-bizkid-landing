@@ -17,11 +17,12 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             {/* Trust Signals - Top Priority */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 lg:gap-5">
               <div className="flex items-center gap-2 md:gap-3 lg:gap-4 bg-white px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3.5 rounded-lg shadow-md">
-                <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground border-r border-border pr-2 md:pr-3 lg:pr-4">Excellent</span>
+                <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground border-r border-border pr-2 md:pr-3 lg:pr-4">4.7</span>
                 <div className="flex gap-0.5 md:gap-1">
-                  {[...Array(5)].map((_, i) => (
+                  {[...Array(4)].map((_, i) => (
                     <span key={i} className="text-[#00b67a] text-lg md:text-xl lg:text-2xl">★</span>
                   ))}
+                  <span className="text-[#00b67a] text-lg md:text-xl lg:text-2xl">☆</span>
                 </div>
                 <div className="flex items-center gap-1.5 md:gap-2">
                   <img 
@@ -83,10 +84,9 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
               </div>
               <div className="text-center md:text-center lg:text-left md:border-l md:border-r md:border-primary/20 lg:border-0">
                 <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary flex items-center justify-center lg:justify-start gap-1 md:gap-2">
-                  <Star className="w-5 h-5 sm:w-6 sm:h-6 md:w-9 md:h-9 lg:w-10 lg:h-10 fill-primary" />
-                  4.7
+                  #1
                 </div>
-                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Rated by Parents</div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Parent Satisfaction</div>
               </div>
               <div className="text-center md:text-center lg:text-left">
                 <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary">98%</div>
