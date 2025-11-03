@@ -12,31 +12,37 @@ const testimonials = [
     text: "My daughter loves the hands-on projects every week!",
     author: "Jennifer M.",
     location: "California",
+    rating: 5,
   },
   {
     text: "Finally, a class that teaches real business skills to kids.",
     author: "Michael R.",
     location: "Texas",
+    rating: 4.7,
   },
   {
     text: "The teacher makes learning about companies so engaging.",
     author: "Lisa P.",
     location: "Florida",
+    rating: 5,
   },
   {
     text: "My son can't wait for Thursday classes every week!",
     author: "David K.",
     location: "Nevada",
+    rating: 4.5,
   },
   {
     text: "Great way to introduce entrepreneurship to young minds.",
     author: "Amanda S.",
     location: "Arizona",
+    rating: 4,
   },
   {
     text: "The pitch projects build confidence and creativity.",
     author: "Robert T.",
     location: "Colorado",
+    rating: 5,
   },
 ];
 
@@ -81,9 +87,23 @@ const TestimonialCarousel = ({ compact = false }: TestimonialCarouselProps) => {
                     : "space-y-4 lg:space-y-5 min-h-[180px] lg:min-h-[200px] flex flex-col justify-between"
                 }>
                   <div className="flex gap-0.5 lg:gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className={compact ? "text-primary text-xs" : "text-primary text-lg lg:text-xl"}>★</span>
-                    ))}
+                    {[...Array(5)].map((_, i) => {
+                      const fillPercentage = Math.min(Math.max(testimonial.rating - i, 0), 1);
+                      return (
+                        <span 
+                          key={i} 
+                          className={compact ? "text-primary text-xs relative" : "text-primary text-lg lg:text-xl relative"}
+                        >
+                          <span className="text-muted-foreground/30">★</span>
+                          <span 
+                            className="absolute inset-0 overflow-hidden text-primary"
+                            style={{ width: `${fillPercentage * 100}%` }}
+                          >
+                            ★
+                          </span>
+                        </span>
+                      );
+                    })}
                   </div>
                   <p className={
                     compact
