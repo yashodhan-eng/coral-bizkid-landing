@@ -10,10 +10,10 @@ interface HeroProps {
 const Hero = ({ onEnrollClick }: HeroProps) => {
   return (
     <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-background to-primary/5 overflow-hidden">
-      <div className="container mx-auto px-4 py-8 sm:py-10 lg:py-16">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start">
+      <div className="container mx-auto px-4 py-8 sm:py-10 md:py-12 lg:py-20">
+        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 lg:gap-16 items-center md:items-start">
           {/* Left Column - Main Content */}
-          <div className="w-full lg:flex-1 space-y-4 sm:space-y-5 lg:space-y-6 text-center lg:text-left">
+          <div className="w-full md:col-span-1 lg:col-span-3 space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 text-center md:text-left">
             {/* Trust Signals - Top Priority */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4">
               <div className="flex items-center gap-1.5 bg-card/50 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/20">
@@ -22,6 +22,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
                   alt="Trustpilot" 
                   className="h-4 w-4"
                 />
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground">Trustpilot</span>
                 <span className="text-xs sm:text-sm font-semibold text-foreground">4.7/5</span>
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
@@ -31,14 +32,13 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
               </div>
               
               <div className="inline-flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
-                <span className="text-xs sm:text-sm font-semibold text-primary">Ages 8-13</span>
+                <span className="text-xs sm:text-sm font-semibold text-primary">Weekly Live Online Classes for Ages 8-13</span>
               </div>
             </div>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight">
               Mini Business Series
-              <span className="block text-primary mt-1">For Young Entrepreneurs</span>
             </h1>
 
             {/* Description - Condensed on Mobile */}
@@ -56,7 +56,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             {/* CTA Button */}
             <button
               onClick={onEnrollClick}
-              className="w-full sm:w-full lg:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-5 sm:py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all text-base sm:text-lg"
+              className="w-full sm:w-full lg:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-4 sm:py-5 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all text-base sm:text-lg"
             >
               Enroll For FREE
             </button>
@@ -91,7 +91,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           </div>
 
           {/* Right Column - Desktop Testimonials */}
-          <div className="hidden lg:block lg:flex-1">
+          <div className="hidden md:block md:col-span-1 lg:col-span-2">
             <TestimonialCarousel compact={false} />
           </div>
         </div>
