@@ -113,7 +113,7 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
     }
 
     // Render when modal opens
-    const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'; // Test key
+    const siteKey = '6Lcnpv4rAAAAAOGN8RszPxz9mpL94Ql4FersrRc7'; // Test key
     
     const renderRecaptcha = () => {
       if (!recaptchaContainerRef.current) {
