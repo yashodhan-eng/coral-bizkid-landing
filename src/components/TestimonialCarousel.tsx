@@ -4,7 +4,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 
 const testimonials = [
@@ -36,7 +36,7 @@ const testimonials = [
 
 const TestimonialCarousel = () => {
   const plugin = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
+    Autoplay({ delay: 2500, stopOnInteraction: false })
   );
 
   return (
@@ -50,20 +50,20 @@ const TestimonialCarousel = () => {
         plugins={[plugin.current]}
         className="w-full"
       >
-        <CarouselContent className="-ml-3 md:-ml-4">
+        <CarouselContent className="-ml-2 sm:-ml-3">
           {testimonials.map((testimonial, index) => (
-            <CarouselItem key={index} className="pl-3 md:pl-4 basis-[85%] sm:basis-[70%] md:basis-1/2 lg:basis-1/3">
-              <Card className="p-4 md:p-6 bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all h-full">
-                <div className="space-y-2 md:space-y-3">
-                  <div className="flex gap-0.5 mb-2">
+            <CarouselItem key={index} className="pl-2 sm:pl-3 basis-[70%] sm:basis-[55%] md:basis-[45%] lg:basis-1/3">
+              <Card className="p-3 sm:p-4 lg:p-6 bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-all h-full">
+                <div className="space-y-2 sm:space-y-3 min-h-[140px] sm:min-h-[160px] flex flex-col justify-between">
+                  <div className="flex gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-primary text-base md:text-lg">★</span>
+                      <span key={i} className="text-primary text-sm sm:text-base">★</span>
                     ))}
                   </div>
-                  <p className="text-sm md:text-base text-foreground font-medium leading-relaxed min-h-[60px] md:min-h-[70px]">
+                  <p className="text-xs sm:text-sm md:text-base text-foreground font-medium leading-relaxed flex-1">
                     "{testimonial.text}"
                   </p>
-                  <p className="text-xs md:text-sm text-muted-foreground font-medium">
+                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">
                     — {testimonial.author}
                   </p>
                 </div>
