@@ -43,9 +43,16 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
               Mini Business Series
             </h1>
 
-            {/* Description */}
+            {/* Description - Condensed on Mobile */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto md:mx-auto lg:mx-0 leading-relaxed md:leading-relaxed">
-              Each week, kids deep-dive into a new company — from MrBeast to Apple — discovering how great founders turned ideas into success stories. They wrap up every class with a creative project, presenting their own business ideas — a fun Mini MBA for young innovators!
+              <span className="block sm:hidden">
+                Kids explore real companies like MrBeast and Apple, then pitch their own business ideas. A fun Mini MBA for ages 8-13!
+              </span>
+              <span className="hidden sm:block">
+                Every week, your child explores a real company (like MrBeast or Apple), 
+                learns business concepts, and works on pitching their own business idea. 
+                It's like a Mini MBA, but fun and hands-on!
+              </span>
             </p>
 
             {/* CTA Button */}
