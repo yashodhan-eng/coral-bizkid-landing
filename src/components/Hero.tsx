@@ -84,7 +84,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
               </div>
               <div className="text-center md:text-center lg:text-left md:border-l md:border-r md:border-primary/20 lg:border-0">
                 <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary flex items-center justify-center lg:justify-start gap-1 md:gap-2">
-                  #1
+                  Ranked #1
                 </div>
                 <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Parent Satisfaction</div>
               </div>
