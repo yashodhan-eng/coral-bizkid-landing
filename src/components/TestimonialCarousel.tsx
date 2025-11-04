@@ -9,6 +9,12 @@ import Autoplay from "embla-carousel-autoplay";
 
 const testimonials = [
   {
+    text: "My daughter was telling us how she has an idea for new Nike shoes and was asking how she can pitch this idea to the company. We were impressed that she was thinking like this.",
+    author: "Sarah L.",
+    location: "New York",
+    rating: 5,
+  },
+  {
     text: "My daughter loves the hands-on projects every week!",
     author: "Jennifer M.",
     location: "California",
