@@ -311,7 +311,7 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
                 Enroll For <span className="text-primary">FREE</span>
               </DialogTitle>
               <DialogDescription className="text-center text-xs sm:text-sm">
-                Start your child's business journey today. Hurry, seats are filling up fast!
+                Start your child's business journey today. Hurry, spots are filling up fast!
               </DialogDescription>
             </DialogHeader>
             
@@ -368,7 +368,7 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
                 className="w-full py-5 sm:py-6 text-base sm:text-lg font-semibold bg-primary hover:bg-primary/90 shadow-coral transition-all duration-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={isSubmitting || !recaptchaToken}
               >
-                {isSubmitting ? "Enrolling..." : "Book your seat now"}
+                {isSubmitting ? "Enrolling..." : "Book your spot now"}
               </Button>
               </form>
             </Form>
