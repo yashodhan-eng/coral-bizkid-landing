@@ -10,7 +10,7 @@ interface HeroProps {
 const Hero = ({ onEnrollClick }: HeroProps) => {
   return (
     <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-background to-primary/5 overflow-hidden">
-      <div className="container mx-auto px-4 pt-2 sm:pt-3 md:pt-4 lg:pt-6 pb-8 sm:pb-10 md:pb-16 lg:pb-24 lg:max-w-7xl">
+      <div className="container mx-auto px-4 pt-0 sm:pt-1 md:pt-2 lg:pt-3 pb-8 sm:pb-10 md:pb-16 lg:pb-24 lg:max-w-7xl">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
           {/* Left Column - Main Content */}
           <div className="w-full lg:flex-1 lg:max-w-3xl space-y-4 sm:space-y-5 md:space-y-7 lg:space-y-10 text-center md:text-center lg:text-left">
