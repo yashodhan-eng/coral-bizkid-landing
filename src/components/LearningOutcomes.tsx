@@ -42,27 +42,27 @@ const schedule = [
 
 const LearningOutcomes = () => {
   return (
-    <section className="py-12 md:py-16 px-4 bg-gradient-to-b from-background to-coral-secondary/10">
+    <section className="py-8 sm:py-10 md:py-12 lg:py-16 px-4 bg-gradient-to-b from-background to-coral-secondary/10">
       <div className="container max-w-4xl mx-auto">
-        <div className="text-center mb-6 md:mb-8 fade-in-up">
-          <h2 className="text-2xl md:text-3xl font-bold">
+        <div className="text-center mb-5 sm:mb-6 md:mb-8 fade-in-up">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">
             What Kids Learn
           </h2>
         </div>
         
-        <div className="space-y-4 fade-in">
+        <div className="space-y-3 sm:space-y-4 fade-in">
           {/* Learning Points */}
           {learningPoints.map((point, index) => {
             const Icon = point.icon;
             return (
               <div 
                 key={index}
-                className="flex gap-3 md:gap-4 items-start bg-card p-4 md:p-5 rounded-lg border border-border"
+                className="flex gap-2.5 sm:gap-3 md:gap-4 items-start bg-card p-3 sm:p-4 md:p-5 rounded-lg border border-border"
               >
-                <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center mt-0.5">
-                  <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center mt-0.5">
+                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-primary" />
                 </div>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
                   {point.description}
                 </p>
               </div>
@@ -70,34 +70,34 @@ const LearningOutcomes = () => {
           })}
 
           {/* Schedule Section */}
-          <Card className="p-4 md:p-5 border-primary/20 overflow-hidden">
+          <Card className="p-3 sm:p-4 md:p-5 border-primary/20 overflow-hidden">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="schedule" className="border-none">
                 <AccordionTrigger className="hover:no-underline py-0">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <span className="text-lg md:text-xl">📅</span>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span className="text-base sm:text-lg md:text-xl">📅</span>
                     </div>
-                    <h3 className="text-base md:text-lg font-semibold text-foreground text-left">
+                    <h3 className="text-sm sm:text-base md:text-lg font-semibold text-foreground text-left leading-tight">
                       Next 3 Weeks' Schedule At A Glance
                     </h3>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="pt-4">
-                  <div className="space-y-3">
+                <AccordionContent className="pt-3 sm:pt-4">
+                  <div className="space-y-2.5 sm:space-y-3">
                     {schedule.map((item, index) => (
                       <div 
                         key={index}
-                        className="flex gap-3 items-center"
+                        className="flex gap-2 sm:gap-3 items-center"
                       >
-                        <div className="flex-shrink-0 w-16 text-sm md:text-base font-semibold text-primary text-center">
+                        <div className="flex-shrink-0 w-12 sm:w-14 md:w-16 text-xs sm:text-sm md:text-base font-semibold text-primary text-center">
                           {item.week}
                         </div>
-                        <div className="flex-1 border-l-2 border-primary/20 pl-3 py-2">
-                          <p className="font-semibold text-sm md:text-base text-foreground">
+                        <div className="flex-1 border-l-2 border-primary/20 pl-2 sm:pl-3 py-1.5 sm:py-2">
+                          <p className="font-semibold text-xs sm:text-sm md:text-base text-foreground">
                             {item.company}
                           </p>
-                          <p className="text-xs md:text-sm text-muted-foreground">
+                          <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-tight">
                             {item.topics}
                           </p>
                         </div>

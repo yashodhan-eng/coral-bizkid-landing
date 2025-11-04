@@ -1,117 +1,113 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Play } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
-import videoThumbnail from "@/assets/video-thumbnail.png";
+import { Star } from "lucide-react";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
+import trustpilotLogo from "@/assets/trustpilot-logo.svg";
 
 interface HeroProps {
   onEnrollClick: () => void;
 }
 
 const Hero = ({ onEnrollClick }: HeroProps) => {
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handlePlayClick = () => {
-    setIsVideoModalOpen(true);
-  };
-
-  useEffect(() => {
-    if (isVideoModalOpen && videoRef.current) {
-      // Handle promise from play() for better iOS compatibility
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log("Video autoplay failed:", error);
-        });
-      }
-    }
-  }, [isVideoModalOpen]);
-
   return (
-    <section className="relative flex items-center justify-center px-4 py-8 md:py-16 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-coral-secondary/20 via-background to-coral-accent-light/10" />
-      
-      <div className="container max-w-6xl mx-auto relative z-10">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
-          {/* Left content */}
-          <div className="text-center md:text-left space-y-4 md:space-y-6 fade-in-up">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Mini Business Series
-            </h1>
-            
-            <div className="space-y-2">
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Each week, kids deep-dive into a new company — from MrBeast to Apple — discovering how great founders turned ideas into success stories. They wrap up every class with a creative project, presenting their own business ideas — a fun Mini MBA for young innovators!
-              </p>
-            </div>
-            
-            <div className="space-y-3 md:space-y-4">
-              <Button
-                size="lg" 
-                onClick={onEnrollClick}
-                className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-coral-lg hover:shadow-coral transition-all duration-300 hover:scale-105"
-              >
-                Enroll For FREE
-              </Button>
-              
-              <p className="text-sm md:text-base text-muted-foreground">
-                Class meets every <span className="font-semibold text-foreground">Thursday</span> · 5 PM – 5:50 PM (PST)
-              </p>
-            </div>
-          </div>
-          
-          {/* Right video thumbnail */}
-          <div className="relative fade-in order-first md:order-last max-w-md mx-auto md:max-w-none">
-            <div className="flex justify-center mb-4">
-              <span className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-primary/10 text-primary font-medium text-sm text-center">
-                Weekly Live Online Classes for Ages 8-13
-              </span>
-            </div>
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-coral-lg cursor-pointer group" onClick={handlePlayClick}>
-              <img 
-                src={videoThumbnail}
-                alt="Video preview: Explore big brands and build your own ideas"
-                className="w-full h-auto object-cover"
-                loading="eager"
-                decoding="async"
-              />
-              
-              {/* Play button overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary/40 rounded-full animate-ping" style={{ animationDuration: '2.5s' }} />
-                  <div className="relative bg-primary hover:bg-primary/90 rounded-full p-4 md:p-6 transition-all duration-300 group-hover:scale-110 shadow-coral-lg">
-                    <Play className="w-6 h-6 md:w-8 md:h-8 text-primary-foreground fill-current" />
-                  </div>
+    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-background to-primary/5 overflow-hidden">
+      <div className="container mx-auto px-4 pt-2 sm:pt-3 md:pt-4 lg:pt-6 pb-8 sm:pb-10 md:pb-16 lg:pb-24 lg:max-w-7xl">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+          {/* Left Column - Main Content */}
+          <div className="w-full lg:flex-1 lg:max-w-3xl space-y-4 sm:space-y-5 md:space-y-7 lg:space-y-10 text-center md:text-center lg:text-left">
+            {/* Trust Signals - Top Priority */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 lg:gap-5">
+              <div className="flex items-center gap-2 md:gap-3 lg:gap-4 bg-white px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3.5 rounded-lg shadow-md">
+                <div className="flex items-center gap-1.5 md:gap-2 border-r border-border pr-2 md:pr-3 lg:pr-4">
+                  <Star className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 fill-[#00b67a] text-[#00b67a]" />
+                  <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground">4.7</span>
+                </div>
+                <div className="flex gap-0.5 md:gap-1">
+                  {[...Array(4)].map((_, i) => (
+                    <span key={i} className="text-[#00b67a] text-lg md:text-xl lg:text-2xl">★</span>
+                  ))}
+                  <span className="text-[#00b67a] text-lg md:text-xl lg:text-2xl">☆</span>
+                </div>
+                <div className="flex items-center gap-1.5 md:gap-2">
+                  <img 
+                    src={trustpilotLogo}
+                    alt="Trustpilot" 
+                    className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"
+                  />
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-foreground">Trustpilot</span>
                 </div>
               </div>
+              
+              <div className="inline-flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full border border-primary/20 md:shadow-sm">
+                <span className="text-xs sm:text-sm md:text-base font-semibold text-primary">Weekly Live Online Classes for Ages 8-13</span>
+              </div>
             </div>
-            
-            {/* Floating accent elements */}
-            <div className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-16 h-16 md:w-24 md:h-24 bg-coral-secondary rounded-full blur-2xl opacity-60 animate-pulse" />
-            <div className="absolute -bottom-2 -left-2 md:-bottom-4 md:-left-4 w-20 h-20 md:w-32 md:h-32 bg-coral-accent-light rounded-full blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1s' }} />
+
+            {/* Headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight md:tracking-tight">
+              Mini Business Series
+            </h1>
+
+            {/* Description - Condensed on Mobile */}
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto md:mx-auto lg:mx-0 leading-relaxed md:leading-relaxed">
+              <span className="block sm:hidden">
+                Kids explore real companies like MrBeast and Apple, then pitch their own business ideas. A fun Mini MBA for ages 8-13!
+              </span>
+              <span className="hidden sm:block">
+                Every week, your child explores a real company (like MrBeast or Apple), 
+                learns business concepts, and works on pitching their own business idea. 
+                It's like a Mini MBA, but fun and hands-on!
+              </span>
+            </p>
+
+            {/* CTA Button */}
+            <button
+              onClick={onEnrollClick}
+              className="w-full sm:w-full md:w-auto md:px-10 lg:px-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-4 sm:py-5 md:py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all text-base sm:text-lg md:text-xl lg:animate-pulse lg:hover:animate-none"
+            >
+              Enroll For FREE
+            </button>
+
+            {/* Class Schedule */}
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
+              <span className="font-semibold text-foreground">Every Thursday</span> • 5 PM – 5:50 PM (PST) • Online
+            </p>
+
+            {/* Mobile Testimonial Carousel - Compact Version */}
+            <div className="block lg:hidden pt-2">
+              <div className="bg-muted/20 -mx-4 px-4 py-4 rounded-lg border-y border-primary/10">
+                <TestimonialCarousel compact={true} />
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 lg:gap-12 pt-2 sm:pt-3 md:pt-4">
+              <div className="text-center md:text-center lg:text-left">
+                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary">5,000+</div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Students</div>
+              </div>
+              <div className="text-center md:text-center lg:text-left md:border-l md:border-r md:border-primary/20 lg:border-0">
+                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary flex items-center justify-center lg:justify-start gap-1 md:gap-2">
+                  Ranked #1
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">By Parents</div>
+              </div>
+              <div className="text-center md:text-center lg:text-left">
+                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary">98%</div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Satisfaction</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Desktop Testimonials Only */}
+          <div className="hidden lg:block lg:flex-1 lg:max-w-md">
+            <TestimonialCarousel compact={false} />
           </div>
         </div>
       </div>
 
-      {/* Video Modal */}
-      <Dialog open={isVideoModalOpen} onOpenChange={setIsVideoModalOpen}>
-        <DialogContent className="w-[90vw] max-w-3xl p-0 bg-black border-none rounded-2xl overflow-hidden">
-          <video 
-            ref={videoRef}
-            src="/hero-video.mp4"
-            className="w-full h-auto rounded-2xl"
-            controls
-            autoPlay
-            playsInline
-            webkit-playsinline="true"
-            preload="none"
-            controlsList="nodownload"
-          />
-        </DialogContent>
-      </Dialog>
+      {/* Decorative Elements - Desktop Only */}
+      <div className="hidden lg:block absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+      <div className="hidden lg:block absolute bottom-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
     </section>
   );
 };
