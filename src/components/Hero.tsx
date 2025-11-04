@@ -33,7 +33,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
                 <span className="text-sm md:text-base lg:text-lg font-bold text-foreground">Trustpilot</span>
               </div>
               
-              <div className="inline-flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full border border-primary/20 md:shadow-sm">
+              <div className="inline-flex items-center gap-1.5 bg-primary/10 px-4 py-2 md:px-6 md:py-2.5 lg:px-8 lg:py-3 rounded-full border border-primary/20 md:shadow-sm whitespace-nowrap">
                 <span className="text-xs sm:text-sm md:text-base font-semibold text-primary">Weekly Live Online Classes for Ages 8-13</span>
               </div>
             </div>
