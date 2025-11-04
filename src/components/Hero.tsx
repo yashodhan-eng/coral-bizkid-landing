@@ -80,20 +80,18 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 lg:gap-12 pt-2 sm:pt-3 md:pt-4">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10 lg:gap-12 pt-2 sm:pt-3 md:pt-4">
               <div className="text-center md:text-center lg:text-left">
-                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary">5,000+</div>
-                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Students</div>
+                <div className="text-base sm:text-xl md:text-3xl lg:text-4xl font-bold text-primary">100+</div>
+                <div className="text-[10px] sm:text-xs md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2 leading-tight">Years of Teacher Experience</div>
               </div>
               <div className="text-center md:text-center lg:text-left md:border-l md:border-r md:border-primary/20 lg:border-0">
-                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary flex items-center justify-center lg:justify-start gap-1 md:gap-2">
-                  Ranked #1
-                </div>
-                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">By Parents</div>
+                <div className="text-base sm:text-xl md:text-3xl lg:text-4xl font-bold text-primary">Stanford</div>
+                <div className="text-[10px] sm:text-xs md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2 leading-tight">Alum & Mom Founded</div>
               </div>
               <div className="text-center md:text-center lg:text-left">
-                <div className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary">98%</div>
-                <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2">Satisfaction</div>
+                <div className="text-base sm:text-xl md:text-3xl lg:text-4xl font-bold text-primary">1,000+</div>
+                <div className="text-[10px] sm:text-xs md:text-base lg:text-lg text-muted-foreground mt-1 md:mt-2 leading-tight">Families Love Us</div>
               </div>
             </div>
           </div>
