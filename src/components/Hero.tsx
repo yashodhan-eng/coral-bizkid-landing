@@ -15,22 +15,22 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           <div className="w-full lg:flex-1 lg:max-w-3xl space-y-4 sm:space-y-5 md:space-y-7 lg:space-y-10 text-center md:text-center lg:text-left">
             {/* Trust Signals - Top Priority */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 lg:gap-5">
-              <div className="flex items-center gap-3 md:gap-4 bg-white px-5 py-3 md:px-6 md:py-3.5 rounded-full shadow-md">
-                <span className="text-base md:text-lg lg:text-xl font-bold text-foreground">Excellent</span>
+              <div className="flex items-center gap-2.5 md:gap-3 bg-white px-4 py-2.5 md:px-5 md:py-3 rounded-full shadow-md">
+                <span className="text-sm md:text-base lg:text-lg font-bold text-foreground">Excellent</span>
                 <div className="flex gap-0.5">
                   {[...Array(4)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-[#00b67a] text-[#00b67a]" />
+                    <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-[#00b67a] text-[#00b67a]" />
                   ))}
-                  <div className="relative w-5 h-5 md:w-6 md:h-6">
-                    <Star className="absolute inset-0 w-5 h-5 md:w-6 md:h-6 text-[#00b67a]" />
+                  <div className="relative w-4 h-4 md:w-5 md:h-5">
+                    <Star className="absolute inset-0 w-4 h-4 md:w-5 md:h-5 text-[#00b67a]" />
                     <div className="absolute inset-0 overflow-hidden" style={{ width: '70%' }}>
-                      <Star className="w-5 h-5 md:w-6 md:h-6 fill-[#00b67a] text-[#00b67a]" />
+                      <Star className="w-4 h-4 md:w-5 md:h-5 fill-[#00b67a] text-[#00b67a]" />
                     </div>
                   </div>
                 </div>
-                <span className="text-base md:text-lg lg:text-xl font-semibold text-[#00b67a]">4.7/5</span>
-                <div className="w-px h-6 md:h-7 bg-border"></div>
-                <span className="text-base md:text-lg lg:text-xl font-bold text-foreground">Trustpilot</span>
+                <span className="text-sm md:text-base lg:text-lg font-semibold text-[#00b67a]">4.7/5</span>
+                <div className="w-px h-5 md:h-6 bg-border"></div>
+                <span className="text-sm md:text-base lg:text-lg font-bold text-foreground">Trustpilot</span>
               </div>
               
               <div className="inline-flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full border border-primary/20 md:shadow-sm">
