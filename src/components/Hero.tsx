@@ -18,9 +18,15 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
               <div className="flex items-center gap-3 md:gap-4 bg-white px-5 py-3 md:px-6 md:py-3.5 rounded-full shadow-md">
                 <span className="text-base md:text-lg lg:text-xl font-bold text-foreground">Excellent</span>
                 <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
+                  {[...Array(4)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-[#00b67a] text-[#00b67a]" />
                   ))}
+                  <div className="relative w-5 h-5 md:w-6 md:h-6">
+                    <Star className="absolute inset-0 w-5 h-5 md:w-6 md:h-6 text-[#00b67a]" />
+                    <div className="absolute inset-0 overflow-hidden" style={{ width: '70%' }}>
+                      <Star className="w-5 h-5 md:w-6 md:h-6 fill-[#00b67a] text-[#00b67a]" />
+                    </div>
+                  </div>
                 </div>
                 <span className="text-base md:text-lg lg:text-xl font-semibold text-[#00b67a]">4.7/5</span>
                 <div className="w-px h-6 md:h-7 bg-border"></div>
