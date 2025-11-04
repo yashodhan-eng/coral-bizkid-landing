@@ -50,7 +50,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
             {/* Description - Condensed on Mobile */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto md:mx-auto lg:mx-0 leading-relaxed md:leading-relaxed">
               <span className="block sm:hidden">
-                Kids explore real companies like MrBeast and Apple, then pitch their own business ideas. A fun Mini MBA for ages 8-13!
+                Where kids turn ideas into action: explore real companies like Apple, DreamWorks, and beyond in this hands-on Mini MBA for ages 8-13.
               </span>
               <span className="hidden sm:block">
                 Every week, your child explores a real company (like MrBeast or Apple), 
