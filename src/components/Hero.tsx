@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import trustpilotLogo from "@/assets/trustpilot-logo.svg";
 
 interface HeroProps {
   onEnrollClick: () => void;
@@ -16,25 +15,16 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
           <div className="w-full lg:flex-1 lg:max-w-3xl space-y-4 sm:space-y-5 md:space-y-7 lg:space-y-10 text-center md:text-center lg:text-left">
             {/* Trust Signals - Top Priority */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 lg:gap-5">
-              <div className="flex items-center gap-2 md:gap-3 lg:gap-4 bg-white px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3.5 rounded-lg shadow-md">
-                <div className="flex items-center gap-1.5 md:gap-2 border-r border-border pr-2 md:pr-3 lg:pr-4">
-                  <Star className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 fill-[#00b67a] text-[#00b67a]" />
-                  <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground">4.7</span>
-                </div>
-                <div className="flex gap-0.5 md:gap-1">
-                  {[...Array(4)].map((_, i) => (
-                    <span key={i} className="text-[#00b67a] text-lg md:text-xl lg:text-2xl">★</span>
+              <div className="flex items-center gap-3 md:gap-4 bg-white px-5 py-3 md:px-6 md:py-3.5 rounded-full shadow-md">
+                <span className="text-base md:text-lg lg:text-xl font-bold text-foreground">Excellent</span>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-[#00b67a] text-[#00b67a]" />
                   ))}
-                  <span className="text-[#00b67a] text-lg md:text-xl lg:text-2xl">☆</span>
                 </div>
-                <div className="flex items-center gap-1.5 md:gap-2">
-                  <img 
-                    src={trustpilotLogo}
-                    alt="Trustpilot" 
-                    className="h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7"
-                  />
-                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-foreground">Trustpilot</span>
-                </div>
+                <span className="text-base md:text-lg lg:text-xl font-semibold text-[#00b67a]">4.7/5</span>
+                <div className="w-px h-6 md:h-7 bg-border"></div>
+                <span className="text-base md:text-lg lg:text-xl font-bold text-foreground">Trustpilot</span>
               </div>
               
               <div className="inline-flex items-center gap-1.5 bg-primary/10 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-full border border-primary/20 md:shadow-sm">
