@@ -25,6 +25,19 @@ export interface AdCampaignRegisterResponse {
   error_type?: string;
 }
 
+export interface AdCampaignSigninRequest {
+  email: string;
+  recaptchaToken: string | null;
+}
+
+export interface AdCampaignSigninResponse {
+  success?: boolean;
+  user_id?: string;
+  message?: string;
+  error?: string;
+  error_type?: string;
+}
+
 export const adCampaignService = {
   async register(data: AdCampaignRegisterRequest): Promise<AdCampaignRegisterResponse> {
     try {
@@ -119,5 +132,85 @@ export const adCampaignService = {
       throw new Error(error.message || 'An unexpected error occurred. Please try again.');
     }
   },
+
+  async signin(data: AdCampaignSigninRequest): Promise<AdCampaignSigninResponse> {
+    try {
+      const payload = {
+        email: data.email,
+        redirectTo: `https://www.coralacademy.com/class/minibusinessseries-c61a217d-9826-45e5-81a7-ff7cdca717b3`,
+        autoRedirect: true,
+      };
+
+      console.log('API Signin Request URL:', `${API_BASE_URL}/ad-campaigns/signin`);
+      console.log('API Signin Request Payload:', payload);
+
+      const response = await fetch(`${API_BASE_URL}/sign-in-noOTP`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Website-Base-URL': window.location.origin,
+          'Allow-Analytics-Tracking': 'true',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log('API Signin Response Status:', response.status, response.statusText);
+
+      let result;
+      try {
+        result = await response.json();
+        console.log('API Signin Response Data:', result);
+      } catch (parseError) {
+        console.error('Failed to parse signin response:', parseError);
+        throw new Error('Invalid response from server. Please try again.');
+      }
+
+      // Handle 400 Bad Request errors explicitly
+      if (!response.ok && response.status === 400) {
+        const responseData = result.response || result;
+        const errorMessage = responseData.error || 'Bad request. Please check your input.';
+        const error = new Error(errorMessage) as any;
+        error.errorType = responseData.error_type || 'validation_error';
+        error.status = response.status;
+        error.error_codes = responseData.error_codes;
+        throw error;
+      }
+
+      // Handle network errors
+      if (!response.ok && response.status >= 500) {
+        throw new Error('Server error. Please try again later.');
+      }
+
+      // Handle response format: { response: {...} }
+      const responseData = result.response || result;
+
+      // Check for errors in response
+      if (responseData.error) {
+        const errorMessage = responseData.error || 'Signin failed';
+        const error = new Error(errorMessage) as any;
+        error.errorType = responseData.error_type || 'unknown';
+        error.status = response.status;
+        throw error;
+      }
+
+      // Success response
+      if (responseData.success !== false) {
+        return responseData;
+      }
+
+      // Fallback error
+      throw new Error(responseData.error || 'Signin failed');
+    } catch (error: any) {
+      // Re-throw if it's already an Error with message
+      if (error instanceof Error) {
+        throw error;
+      }
+      // Handle network errors
+      if (error.name === 'TypeError' || error.message?.includes('fetch')) {
+        throw new Error('Network error. Please check your connection and try again.');
+      }
+      throw new Error(error.message || 'An unexpected error occurred. Please try again.');
+    }
+  }
 };
 

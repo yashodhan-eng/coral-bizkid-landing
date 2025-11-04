@@ -251,6 +251,13 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
       // Handle success
       toast.success(response.message || 'Registration successful! Redirecting...');
 
+      const res = await adCampaignService.signin({
+        email: data.email,
+        recaptchaToken: freshToken,
+      });
+
+      console.log("Sign-in response:", res);
+
       // Redirect to class page after a short delay
       setTimeout(() => {
         window.location.href = "https://www.coralacademy.com/class/minibusinessseries-c61a217d-9826-45e5-81a7-ff7cdca717b3";
