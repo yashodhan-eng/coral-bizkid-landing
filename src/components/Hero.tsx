@@ -53,9 +53,7 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
                 Where kids turn ideas into action: explore real companies like Apple, DreamWorks, and beyond in this hands-on Mini MBA for ages 8-13.
               </span>
               <span className="hidden sm:block">
-                Every week, your child explores a real company (like MrBeast or Apple), 
-                learns business concepts, and works on pitching their own business idea. 
-                It's like a Mini MBA, but fun and hands-on!
+                Every week, your child explores a real company (like MrBeast or Apple), learns business concepts, and works on pitching their own business idea. It's like a Mini MBA, but fun and hands-on!
               </span>
             </p>
 
