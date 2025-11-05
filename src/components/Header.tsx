@@ -2,7 +2,7 @@ import coralLogo from "@/assets/coral-logo.svg";
 
 const Header = () => {
   return (
-    <header className="w-full py-2 sm:py-3 px-4 sm:px-6 pb-0">
+    <header className="w-full py-4 sm:py-5 px-4 sm:px-6 pb-0">
       <div className="container max-w-6xl mx-auto">
         <div className="flex justify-center md:justify-start">
           <img 
