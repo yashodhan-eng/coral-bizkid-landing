@@ -257,11 +257,25 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
       });
 
       console.log("Sign-in response:", res);
+      const magicLink = res?.magicLink;
+      console.log("magicLink: ",magicLink)
+      if (magicLink) {
+        // Redirect to magic link after short delay to allow user to see success toast
+        setTimeout(() => {
+          window.location.href = magicLink;
+        }, 2000);
+        console.log("...")
+      } else {
+        console.error("No magic link received in sign-in response");
+        toast.error("Failed to get sign-in link. Please check your email manually.");
+        setShowLoader(false);
+        setIsSubmitting(false);
+      }
 
-      // Redirect to class page after a short delay
-      setTimeout(() => {
-        window.location.href = "https://www.coralacademy.com/class/minibusinessseries-c61a217d-9826-45e5-81a7-ff7cdca717b3";
-      }, 2000);
+      // // Redirect to class page after a short delay
+      // setTimeout(() => {
+      //   window.location.href = "https://www.coralacademy.com/class/minibusinessseries-c61a217d-9826-45e5-81a7-ff7cdca717b3";
+      // }, 2000);
     } catch (error: any) {
       console.error("API error:", error);
       setIsSubmitting(false);
@@ -310,8 +324,21 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
 
   return (
     <>
-      <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="w-[85vw] max-w-[340px] sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-y-auto p-0">
+      <Dialog open={open} onOpenChange={onOpenChange} modal={false}>
+        <DialogContent className="w-[85vw] max-w-[340px] sm:max-w-md border-2 border-primary/20 shadow-coral-lg rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-y-auto p-0"
+        onInteractOutside={(event) => {
+        const target = event.target as HTMLElement;
+        // Prevent closing when user interacts with reCAPTCHA
+        if (target.closest('.grecaptcha-badge') || target.tagName === 'IFRAME') {
+          event.preventDefault();
+        }
+      }}
+      // optional: disable escape close while captcha is open
+      onEscapeKeyDown={(event) => {
+        // Optionally disable closing on Escape if you want
+        // event.preventDefault();
+      }}
+    >
           <div className="p-4 sm:p-8">
             <DialogHeader className="mb-3 sm:mb-6">
               <DialogTitle className="text-xl sm:text-2xl font-bold text-center">

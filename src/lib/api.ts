@@ -1,6 +1,7 @@
 // API service for AdCampaigns backend integration
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.preprod.coralacademy.com';
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "https://api.preprod.coralacademy.com";
 
 export interface AdCampaignRegisterRequest {
   name: string;
@@ -31,6 +32,8 @@ export interface AdCampaignSigninRequest {
 }
 
 export interface AdCampaignSigninResponse {
+  magicLink: any;
+  magic_link: any;
   success?: boolean;
   user_id?: string;
   message?: string;
@@ -39,7 +42,9 @@ export interface AdCampaignSigninResponse {
 }
 
 export const adCampaignService = {
-  async register(data: AdCampaignRegisterRequest): Promise<AdCampaignRegisterResponse> {
+  async register(
+    data: AdCampaignRegisterRequest
+  ): Promise<AdCampaignRegisterResponse> {
     try {
       // Explicitly construct payload without any UTM parameters
       const payload = {
@@ -51,38 +56,40 @@ export const adCampaignService = {
         schooling_mode: data.schooling_mode ?? null,
         landing_variant: data.landing_variant ?? null,
         recaptchaToken: data.recaptchaToken,
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       };
 
-      console.log('API Request URL:', `${API_BASE_URL}/ad-campaigns/register`);
-      console.log('API Request Payload:', payload);
+      console.log("API Request URL:", `${API_BASE_URL}/ad-campaigns/register`);
+      console.log("API Request Payload:", payload);
 
       const response = await fetch(`${API_BASE_URL}/ad-campaigns/register`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Website-Base-URL': window.location.origin,
-          'Allow-Analytics-Tracking': 'true',
+          "Content-Type": "application/json",
+          "Website-Base-URL": window.location.origin,
+          "Allow-Analytics-Tracking": "true",
         },
         body: JSON.stringify(payload),
       });
 
-      console.log('API Response Status:', response.status, response.statusText);
+      console.log("API Response Status:", response.status, response.statusText);
 
       let result;
       try {
         result = await response.json();
-        console.log('API Response Data:', result);
+        console.log("API Response Data:", result);
       } catch (parseError) {
-        console.error('Failed to parse response:', parseError);
-        throw new Error('Invalid response from server. Please try again.');
+        console.error("Failed to parse response:", parseError);
+        throw new Error("Invalid response from server. Please try again.");
       }
 
       // Handle 400 Bad Request errors explicitly
       if (!response.ok && response.status === 400) {
         const responseData = result.response || result;
-        const errorMessage = responseData.error || 'Bad request. Please check your input.';
+        const errorMessage =
+          responseData.error || "Bad request. Please check your input.";
         const error = new Error(errorMessage) as any;
-        error.errorType = responseData.error_type || 'validation_error';
+        error.errorType = responseData.error_type || "validation_error";
         error.status = response.status;
         error.error_codes = responseData.error_codes;
         throw error;
@@ -90,7 +97,7 @@ export const adCampaignService = {
 
       // Handle network errors
       if (!response.ok && response.status >= 500) {
-        throw new Error('Server error. Please try again later.');
+        throw new Error("Server error. Please try again later.");
       }
 
       // Handle response format: { response: {...}, placements: [...] }
@@ -98,17 +105,20 @@ export const adCampaignService = {
 
       // Check for errors in response
       if (responseData.error) {
-        const errorMessage = responseData.error || 'Registration failed';
+        const errorMessage = responseData.error || "Registration failed";
         const error = new Error(errorMessage) as any;
-        error.errorType = responseData.error_type || 'unknown';
+        error.errorType = responseData.error_type || "unknown";
         error.status = response.status;
         throw error;
       }
 
       // Handle duplicate email - throw error so frontend can handle it
-      if (responseData.duplicate || responseData.message === 'Email already registered') {
-        const error = new Error('Email already registered') as any;
-        error.errorType = 'duplicate_email';
+      if (
+        responseData.duplicate ||
+        responseData.message === "Email already registered"
+      ) {
+        const error = new Error("Email already registered") as any;
+        error.errorType = "duplicate_email";
         error.duplicate = true;
         throw error;
       }
@@ -119,58 +129,77 @@ export const adCampaignService = {
       }
 
       // Fallback error
-      throw new Error(responseData.error || 'Registration failed');
+      throw new Error(responseData.error || "Registration failed");
     } catch (error: any) {
       // Re-throw if it's already an Error with message
       if (error instanceof Error) {
         throw error;
       }
       // Handle network errors
-      if (error.name === 'TypeError' || error.message?.includes('fetch')) {
-        throw new Error('Network error. Please check your connection and try again.');
+      if (error.name === "TypeError" || error.message?.includes("fetch")) {
+        throw new Error(
+          "Network error. Please check your connection and try again."
+        );
       }
-      throw new Error(error.message || 'An unexpected error occurred. Please try again.');
+      throw new Error(
+        error.message || "An unexpected error occurred. Please try again."
+      );
     }
   },
 
-  async signin(data: AdCampaignSigninRequest): Promise<AdCampaignSigninResponse> {
+  async signin(
+    data: AdCampaignSigninRequest
+  ): Promise<AdCampaignSigninResponse> {
     try {
+      const redirectTo =
+        import.meta.env.VITE_APP_ENV === "development"
+          ? "https://www.preprod.coralacademy.com/class/lorem-epsum-cbdc05bd-eaf6-4b4f-b753-698b7a916dbf"
+          : "https://www.coralacademy.com/class/minibusinessseries-c61a217d-9826-45e5-81a7-ff7cdca717b3";
       const payload = {
         email: data.email,
-        redirectTo: `https://www.coralacademy.com/class/minibusinessseries-c61a217d-9826-45e5-81a7-ff7cdca717b3`,
+        redirectTo: redirectTo,
         autoRedirect: true,
+        source: "MBS_Class_Page",
       };
 
-      console.log('API Signin Request URL:', `${API_BASE_URL}/ad-campaigns/signin`);
-      console.log('API Signin Request Payload:', payload);
+      console.log(
+        "API Signin Request URL:",
+        `${API_BASE_URL}/ad-campaigns/signin`
+      );
+      console.log("API Signin Request Payload:", payload);
 
       const response = await fetch(`${API_BASE_URL}/sign-in-noOTP`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Website-Base-URL': window.location.origin,
-          'Allow-Analytics-Tracking': 'true',
+          "Content-Type": "application/json",
+          "Website-Base-URL": window.location.origin,
+          "Allow-Analytics-Tracking": "true",
         },
         body: JSON.stringify(payload),
       });
 
-      console.log('API Signin Response Status:', response.status, response.statusText);
+      console.log(
+        "API Signin Response Status:",
+        response.status,
+        response.statusText
+      );
 
       let result;
       try {
         result = await response.json();
-        console.log('API Signin Response Data:', result);
+        console.log("API Signin Response Data:", result);
       } catch (parseError) {
-        console.error('Failed to parse signin response:', parseError);
-        throw new Error('Invalid response from server. Please try again.');
+        console.error("Failed to parse signin response:", parseError);
+        throw new Error("Invalid response from server. Please try again.");
       }
 
       // Handle 400 Bad Request errors explicitly
       if (!response.ok && response.status === 400) {
         const responseData = result.response || result;
-        const errorMessage = responseData.error || 'Bad request. Please check your input.';
+        const errorMessage =
+          responseData.error || "Bad request. Please check your input.";
         const error = new Error(errorMessage) as any;
-        error.errorType = responseData.error_type || 'validation_error';
+        error.errorType = responseData.error_type || "validation_error";
         error.status = response.status;
         error.error_codes = responseData.error_codes;
         throw error;
@@ -178,7 +207,7 @@ export const adCampaignService = {
 
       // Handle network errors
       if (!response.ok && response.status >= 500) {
-        throw new Error('Server error. Please try again later.');
+        throw new Error("Server error. Please try again later.");
       }
 
       // Handle response format: { response: {...} }
@@ -186,9 +215,9 @@ export const adCampaignService = {
 
       // Check for errors in response
       if (responseData.error) {
-        const errorMessage = responseData.error || 'Signin failed';
+        const errorMessage = responseData.error || "Signin failed";
         const error = new Error(errorMessage) as any;
-        error.errorType = responseData.error_type || 'unknown';
+        error.errorType = responseData.error_type || "unknown";
         error.status = response.status;
         throw error;
       }
@@ -199,18 +228,21 @@ export const adCampaignService = {
       }
 
       // Fallback error
-      throw new Error(responseData.error || 'Signin failed');
+      throw new Error(responseData.error || "Signin failed");
     } catch (error: any) {
       // Re-throw if it's already an Error with message
       if (error instanceof Error) {
         throw error;
       }
       // Handle network errors
-      if (error.name === 'TypeError' || error.message?.includes('fetch')) {
-        throw new Error('Network error. Please check your connection and try again.');
+      if (error.name === "TypeError" || error.message?.includes("fetch")) {
+        throw new Error(
+          "Network error. Please check your connection and try again."
+        );
       }
-      throw new Error(error.message || 'An unexpected error occurred. Please try again.');
+      throw new Error(
+        error.message || "An unexpected error occurred. Please try again."
+      );
     }
-  }
+  },
 };
-
