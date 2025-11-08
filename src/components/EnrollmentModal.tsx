@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { adCampaignService } from "@/lib/api";
+import { trackModalEvent, trackFormEvent, identifyUser, trackEvent } from "@/lib/mixpanel";
 
 declare global {
   interface Window {
@@ -98,6 +99,8 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
   // Render/re-render reCAPTCHA when modal opens
   useEffect(() => {
     if (!open) {
+      // Track modal closed
+      trackModalEvent("closed", "Enrollment Modal");
       // Reset when modal closes
       setRecaptchaToken(null);
       form.reset();
@@ -111,6 +114,10 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
       }
       return;
     }
+
+    // Track modal opened
+    trackModalEvent("opened", "Enrollment Modal");
+    trackFormEvent("opened", "Enrollment Form");
 
     // Render when modal opens
     const siteKey = '6Lcnpv4rAAAAAOGN8RszPxz9mpL94Ql4FersrRc7'; // Test key
@@ -204,10 +211,20 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
     // Check if reCAPTCHA is completed
     if (!recaptchaToken) {
       toast.error('Please complete the reCAPTCHA verification');
+      trackFormEvent("submitted", "Enrollment Form", {
+        status: "failed",
+        reason: "recaptcha_not_completed",
+      });
       return;
     }
 
     setIsSubmitting(true);
+    
+    // Track form submission attempt
+    trackFormEvent("submitted", "Enrollment Form", {
+      status: "attempted",
+      email: data.email,
+    });
     
     try {
       // Get fresh reCAPTCHA token right before submission (tokens can expire)
@@ -243,6 +260,28 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
       });
 
       console.log("API response:", response);
+
+      // Track successful form submission
+      trackFormEvent("submitted", "Enrollment Form", {
+        status: "success",
+        email: data.email,
+        parent_name: data.parentName,
+      });
+
+      // Identify user in Mixpanel
+      identifyUser(data.email, {
+        email: data.email,
+        parent_name: data.parentName,
+        source: "MBS_Class_Page",
+        registered_at: new Date().toISOString(),
+      });
+
+      // Track conversion event
+      trackEvent("Enrollment Completed", {
+        email: data.email,
+        parent_name: data.parentName,
+        source: "MBS_Class_Page",
+      });
 
       // Only close modal and show loader on success
       onOpenChange(false);
@@ -300,6 +339,19 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
       // Clear the token state
       setRecaptchaToken(null);
       
+      // Track failed form submission
+      trackFormEvent("submitted", "Enrollment Form", {
+        status: "failed",
+        error_type: error.errorType || "unknown",
+        email: data.email,
+      });
+
+      trackEvent("Enrollment Failed", {
+        error_type: error.errorType || "unknown",
+        error_message: error.message || "Unknown error",
+        email: data.email,
+      });
+
       // Handle different error types with appropriate messages
       let errorMessage = 'Registration failed. Please try again.';
       
@@ -360,7 +412,18 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
                     <FormControl>
                       <Input 
                         placeholder="Enter your full name" 
-                        {...field} 
+                        {...field}
+                        onFocus={() => {
+                          trackFormEvent("field_focused", "Enrollment Form", {
+                            field_name: "parentName",
+                          });
+                        }}
+                        onChange={(e) => {
+                          field.onChange(e);
+                          trackFormEvent("field_changed", "Enrollment Form", {
+                            field_name: "parentName",
+                          });
+                        }}
                         className="rounded-xl h-10 sm:h-11 text-sm"
                       />
                     </FormControl>
@@ -380,6 +443,17 @@ const EnrollmentModal = ({ open, onOpenChange }: EnrollmentModalProps) => {
                         type="email"
                         placeholder="your.email@example.com" 
                         {...field}
+                        onFocus={() => {
+                          trackFormEvent("field_focused", "Enrollment Form", {
+                            field_name: "email",
+                          });
+                        }}
+                        onChange={(e) => {
+                          field.onChange(e);
+                          trackFormEvent("field_changed", "Enrollment Form", {
+                            field_name: "email",
+                          });
+                        }}
                         className="rounded-xl h-10 sm:h-11 text-sm"
                       />
                     </FormControl>

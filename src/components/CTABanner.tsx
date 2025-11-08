@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { trackButtonClick } from "@/lib/mixpanel";
 
 interface CTABannerProps {
   onEnrollClick: () => void;
@@ -14,7 +15,13 @@ const CTABanner = ({ onEnrollClick }: CTABannerProps) => {
         
         <Button 
           size="lg"
-          onClick={onEnrollClick}
+          onClick={() => {
+            trackButtonClick("Try for Free - CTA Banner", {
+              location: "cta_banner",
+              button_type: "secondary_cta",
+            });
+            onEnrollClick();
+          }}
           className="bg-background text-primary hover:bg-background/90 px-6 sm:px-8 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
         >
           TRY FOR FREE

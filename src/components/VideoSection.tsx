@@ -2,11 +2,16 @@ import { useState } from "react";
 import { Play } from "lucide-react";
 import heroVideo from "@/assets/hero-video.mp4";
 import videoThumbnail from "@/assets/video-thumbnail.png";
+import { trackVideoEvent } from "@/lib/mixpanel";
 
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayClick = () => {
+    trackVideoEvent("play", "Hero Video", {
+      video_location: "video_section",
+      video_name: "hero-video",
+    });
     setIsPlaying(true);
   };
 
@@ -49,6 +54,16 @@ const VideoSection = () => {
                 controls
                 autoPlay
                 className="w-full h-full"
+                onPause={() => {
+                  trackVideoEvent("pause", "Hero Video", {
+                    video_location: "video_section",
+                  });
+                }}
+                onEnded={() => {
+                  trackVideoEvent("ended", "Hero Video", {
+                    video_location: "video_section",
+                  });
+                }}
               >
                 Your browser does not support the video tag.
               </video>
