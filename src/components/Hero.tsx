@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import { trackButtonClick } from "@/lib/mixpanel";
 
 interface HeroProps {
   onEnrollClick: () => void;
@@ -55,7 +56,13 @@ const Hero = ({ onEnrollClick }: HeroProps) => {
 
             {/* CTA Button */}
             <button
-              onClick={onEnrollClick}
+              onClick={() => {
+                trackButtonClick("Try for Free - Hero", {
+                  location: "hero_section",
+                  button_type: "primary_cta",
+                });
+                onEnrollClick();
+              }}
               className="w-full sm:w-full md:w-auto md:px-10 lg:px-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-4 sm:py-5 md:py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all text-base sm:text-lg md:text-xl lg:animate-pulse lg:hover:animate-none"
             >
               TRY FOR FREE
