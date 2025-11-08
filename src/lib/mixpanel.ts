@@ -18,6 +18,8 @@ export const initMixpanel = () => {
       track_pageview: true, // Automatically track page views
       persistence: 'localStorage',
       ignore_dnt: true,
+      record_sessions_percent: 100,
+      record_idle_timeout_ms: 1800000,
       api_host: 'https://api.mixpanel.com',
       // Enable session recording for heatmaps (enable in Mixpanel dashboard settings)
       // Session recording must be enabled in your Mixpanel project settings
